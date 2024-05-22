@@ -7,7 +7,9 @@ const { hashPassword, comparePassword } = require("./Encryption/bycrpt.js");
 const jwt = require("jsonwebtoken");
 const passport = require("./Authentication/auth.js");
 const multer = require("multer");
+const cors=require("cors");
 
+const app = express();
 app.use(
   "*",
   cors({
@@ -16,7 +18,6 @@ app.use(
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
-const app = express();
 
 app.use(passport.initialize()); // this line should always be after loc 12
 const port = process.env.PORT || 3002;
