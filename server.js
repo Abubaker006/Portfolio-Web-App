@@ -8,7 +8,14 @@ const jwt = require("jsonwebtoken");
 const passport = require("./Authentication/auth.js");
 const multer = require("multer");
 
-const cors = require("cors");
+app.use(
+  "*",
+  cors({
+    origin: process.env.ORIGIN || true,
+    credentials: true,
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 const app = express();
 
 app.use(passport.initialize()); // this line should always be after loc 12
